@@ -1,0 +1,19 @@
+[Unit]
+Description=Zyro Hosting Panel
+After=network.target
+
+[Service]
+Type=simple
+User=zyro
+WorkingDirectory=/opt/zyro-panel/backend
+ExecStart=/usr/bin/node /opt/zyro-panel/backend/server.js
+Restart=on-failure
+RestartSec=5
+Environment=NODE_ENV=production
+
+# Security hardening
+NoNewPrivileges=false
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target
